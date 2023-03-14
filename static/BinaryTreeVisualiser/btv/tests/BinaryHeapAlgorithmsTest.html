@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>QUnit Test Suite - BinaryTree.js</title>
+        
+        <!-- styles -->
+        <link rel="stylesheet" type="text/css" href="qunit-1.10.0.css" />
+        <link href="../../styles/jquery/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+        
+        <!-- Your project file goes here -->
+        <!-- third-party scripts: jQuery, jQuery UI, QUnit and JSGL -->
+        <script type="text/javascript" src="../third-party/qunit-1.10.0.js"></script>
+        <script type="text/javascript" src="../third-party/jsgl.js"></script>
+        <script type="text/javascript" src="../third-party/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="../third-party/jquery-ui-1.10.3.custom.js"></script>
+
+        <!-- my scripts -->
+        <script type="text/javascript" src="../jsgl.js"></script>
+        <script type="text/javascript" src="../btv.js"></script>
+        <script type="text/javascript" src="../Elements.js"></script>
+        <script type="text/javascript" src="../BinaryTree.js"></script>
+        <script type="text/javascript" src="../Algorithms.js"></script>
+        <script type="text/javascript" src="../Visualiser.js"></script>
+        <script type="text/javascript" src="../Controllers.js"></script>
+
+        <!-- Your tests file goes here -->
+        <!-- moved to the end -->
+
+        <style> 
+            .offTheScreen {
+                position: absolute;
+                left: -1000px;
+                top: -1000px;
+            }
+            #controlDiv {
+                float: left; 
+                width: 292px;
+                height: 600px;
+                margin-right: 3px;
+            }
+
+            #drawDiv {
+                float: left;
+                width: 800px;
+                height: 600px;
+                border: solid 1px grey;
+                margin-left: 3px;
+            }            
+        </style>
+    </head>
+    <body>
+        <div class="offTheScreen">
+            <div id="controlDiv"></div>
+            <div id="drawDiv"></div>
+        </div>
+
+        <script type="text/javascript">
+            var controller = new btv.BinaryHeapController(document.getElementById("controlDiv"), document.getElementById("drawDiv"));            
+        </script>
+
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+
+        <!-- Your tests file goes here -->
+        <script type="text/javascript" src="BinaryHeapAlgorithmsTest.js"></script>
+    </body>
+</html>

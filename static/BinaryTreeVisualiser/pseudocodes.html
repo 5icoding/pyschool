@@ -1,0 +1,1039 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>BinaryTreeVisualiser - Pseudocodes</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="title" content="Web site" />
+        <meta name="description" content="Site description here" />
+        <meta name="keywords" content="keywords here" />
+        <meta name="language" content="en" />
+        <meta name="subject" content="Site subject here" />
+        <meta name="robots" content="All" />
+        <meta name="copyright" content="Your company" />
+        <meta name="abstract" content="Site description here" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+
+        <link id="theme" rel="stylesheet" type="text/css" href="styles/style.css" title="theme" />
+        <script type="text/javascript" src="styles/style.js"></script>
+
+        <link href="styles/google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="styles/google-code-prettify/prettify.js"></script>
+    </head>
+    <body> 
+        <!-- top wrapper -->  
+        <div id="topWrapper"> 
+            <div id="topBanner"></div> 
+        </div>  
+        <div id="topnav"> 
+            <ul>
+                <li>
+                    <a href="home.html" shape="rect">Home</a>
+                </li>
+                <li>
+                    <a href="binary-heap.html" shape="rect">Binary Heap</a>
+                </li>
+                <li>
+                    <a href="binary-search-tree.html" shape="rect">Binary Search Tree</a>
+                </li>
+                <li id="current">
+                    <a href="pseudocodes.html" shape="rect">Pseudocodes</a>
+                </li>
+                <li>
+                    <a href="instructions.html" shape="rect">Instructions</a>
+                </li>
+            </ul> 
+        </div>  
+        <!-- end top wrapper -->  
+        <div id="wrapper"> 
+            <div id="container"> 
+                <!--  content -->  
+                <div id="content"> 
+                    <div style="margin-top:20px;">   
+                        <div class="clear"></div>
+
+                        <div id="quickmenu">
+                            <span class="quickmenu_header">Quick menu:</span>
+                            <ul>
+                                <li><a href="#binary_tree">Binary tree</a></li>
+                                <li><a href="#binary_heap">Binary heap + priority queue</a>
+                                    <ul>
+                                        <li><a href="#heapify-down">Heapify-down</a></li>
+                                        <li><a href="#heapify-up">Heapify-up</a></li>
+                                        <li><a href="#random_binary_heap">Random binary heap</a></li>
+                                        <li><a href="#build_heap">Build heap</a></li>
+                                        <li><a href="#bh_insert">Insert</a></li>
+                                        <li><a href="#bh_delete">Delete</a></li>
+                                        <li><a href="#bh_get_max">Get max</a></li>
+                                        <li><a href="#extract_max">Extract max</a></li>
+                                        <li><a href="#heap_sort">Heap sort</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#binary_search_tree">Binary search tree</a>
+                                    <ul>
+                                        <li><a href="#random_binary_search_tree">Random binary search tree</a></li>
+                                        <li><a href="#bst_insert">Insert</a></li>
+                                        <li><a href="#find">Find</a></li>
+                                        <li><a href="#bst_delete">Delete</a></li>
+                                        <li><a href="#get_max">Get max</a></li>
+                                        <li><a href="#get_min">Get min</a></li>
+                                        <li><a href="#get_predecessor">Get predecessor</a></li>
+                                        <li><a href="#get_successor">Get successor</a></li>
+                                        <li><a href="#to_preorder_array">To pre-order array</a></li>
+                                        <li><a href="#to_inorder_array">To in-order array</a></li>
+                                        <li><a href="#to_postorder_array">To post-order array</a></li>
+                                    </ul>
+                                </li>                                
+                            </ul>
+                        </div>
+
+                        <div class="section">
+                            <h1 id="pseudocodes" class="anchor left_clear">Pseudocodes</h1>
+                            <p>
+                                A little of a theory.
+                                There are <strong>definitions</strong> of used data structures 
+                                (<a href="#binary_tree">Binary Tree</a>, <a href="#binary_heap">Binary Heap</a>,
+                                <a href="#binary_heap">Priority Queue</a>, <a href="#binary_search_tree">Binary Search Tree</a>)
+                                and <em>simplified actually used</em> <strong>codes</strong> of algorithms.
+                                <br/>
+                                Binary Tree Visualiser is written in <strong>JavaScript</strong>, so these codes are also written in JavaScript syntax.
+                                Codes are simplified to show the <em>main</em> functionality. Extreme cases (given empty tree, null node, etc.) are usually not solved.
+                                <br/>
+                                Make sure you know the basics about JavaScript. 
+                                It is a scripting language. It is <em>object oriented</em>, <em>dynamic typed</em>, <em>prototype based</em> and has <em>first-class functions</em>.
+                                In JavaScript <em>object are passed by references</em>, but <em>primitive types by values</em>.
+                                There are <em>no classes</em>. <em>Functions are used as objects constructors</em>, and prototyping is used for inheritance.<a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/JavaScript_Overview" class="reference">developer.mozilla.org</a>
+                                <br/>
+                            </p>
+
+                            <div class="subsection">
+                                <h2 id="binary_tree" class="anchor left_clear">Binary Tree</h2>
+                                <p>
+                                    A <strong>binary tree</strong> is an data structure with one <em>root node</em> (the ancestor of all nodes).
+                                    Each node has a <em>value</em> and at most two child nodes, usually called <em>left child</em> and <em>right child</em>.
+                                    Each node (except for root) has one parent. Root node has no parent.
+                                    Node with no children is called <em>leaf</em>.
+                                    <br/>
+                                    The formal recursive definition is: a binary tree is either empty (represented by a null),
+                                    or is made of a single node, where the left and right references (recursive definition ahead)
+                                    each point to a binary tree.<a href="http://cslibrary.stanford.edu/110/BinaryTrees.html" class="reference">Nick Parlante</a>                                    
+                                </p>
+
+                                <div class="subsection">
+                                    <h3 id="binary_tree_code" class="anchor">Binary Tree</h3>
+                                    <pre class="prettyprint">
+/**
+ * @class
+ * @param {BinaryTreeNode} root
+ */
+function BinaryTree(root) {
+    /**
+     * @private
+     * @type {BinaryTreeNode}
+     */
+    this.root = root; 
+}
+
+/**
+ * @returns {BinaryTreeNode}
+ */
+BinaryTree.prototype.getRoot = function() {...}
+
+/**
+ * @param {BinaryTreeNode} root
+ */
+BinaryTree.prototype.setRoot = function(root) {...}
+
+/**
+ * Return number of nodes in tree.
+ * @returns {Number}
+ */
+BinaryTree.prototype.getCount = function() {...}
+
+/**
+ * Build a tree from given array.
+ * @param {Number[]} array
+ */
+BinaryTree.prototype.build = function(array) {...}
+
+/**
+ * Swap nodes and change all needed references. 
+ * @param {BinaryTreeNode} node1
+ * @param {BinaryTreeNode} node2
+ */
+BinaryTree.prototype.swapNodes = function(node1, node2) {...}
+
+/**
+ * Simulate an array implementation.
+ * @param {Number} index
+ * @returns {BinaryTreeNode}
+ */
+BinaryTree.prototype.getNode = function(index) {...}
+
+/**
+ * Simulate an array implementation.
+ * @param {BinaryTreeNode} node
+ * @returns {Number} Index of given node.
+ */
+BinaryTree.prototype.getIndex = function(node) {...}</pre>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3 id="binary_tree_node_code" class="anchor">Binary Tree Node</h3>
+                                    <pre class="prettyprint">
+/**
+ * @class
+ * @param {Number|String} value The value of the node.
+ */
+BinaryTreeNode = function(value) {
+    /**
+     * @private
+     * @type {Number|String}
+     */     
+    this.value = value;
+    
+    /**
+     * @private
+     * @type {BinaryTreeNode}
+     */
+    this.parent = null;
+    
+    /**
+     * @private
+     * @type {BinaryTreeNode}
+     */
+    this.left = null;
+    
+    /**
+     * @private
+     * @type {BinaryTreeNode}
+     */
+    this.right = null;
+}
+                                    
+/**
+ * @returns {Number}
+ */
+BinaryTreeNode.prototype.getValue = function() {...}
+
+/**
+ * @returns {Boolean}
+ */
+BinaryTreeNode.prototype.isRoot = function() {...}
+
+/**
+ * @returns {Boolean}
+ */
+BinaryTreeNode.prototype.isLeaf = function() {...}
+
+/**
+ * @returns {BinaryTreeNode}
+ */
+BinaryTreeNode.prototype.getParent = function() {...}
+
+/**
+ * Set left child and changes all needed references.
+ * @param {BinaryTreeNode} left
+ */
+BinaryTreeNode.prototype.setLeft = function(left) {...}
+
+/**
+ * @returns {BinaryTreeNode}
+ */
+BinaryTreeNode.prototype.getLeft = function() {...}
+
+/**
+ * Set right child and changes all needed references.
+ * @param {BinaryTreeNode} right
+ */
+BinaryTreeNode.prototype.setRight = function(right) {...}
+
+/**
+ * @returns {BinaryTreeNode}
+ */
+BinaryTreeNode.prototype.getRight = function() {...}</pre>
+                                </div>                                
+                            </div>
+
+                            <div class="subsection">
+                                <h2 id="binary_heap" class="anchor">Binary Heap + Priority Queue</h2>
+                                <p>
+                                    A <strong>binary heap</strong> is a binary tree. In addition it meets these two condition:
+                                </p>
+                                <ul>
+                                    <li>
+                                        The tree is a <em>complete binary tree</em>:
+                                        a binary tree in which every level, except possibly the deepest, is completely filled,
+                                        and all nodes must be as far left as possible.
+                                    </li>
+                                    <li>
+                                        The <em>heap property</em>: 
+                                        each node is lower than or equal to its parent.<a href="http://xlinux.nist.gov/dads/HTML/binaryheap.html" class="reference">Chris L. Kuszmaul</a>
+                                    </li>
+                                </ul>
+                                <p>
+                                    A <strong>priority queue</strong> is an abstract data type to efficiently support <em>finding the item</em> with the <em>highest priority</em> (highest value) across a series of operations (nodes). 
+                                    The basic operations are: insert, get maximum and extract maximum.<a href="http://xlinux.nist.gov/dads/HTML/priorityque.html" class="reference">Paul E. Black</a>
+                                    In Binary Tree Visualiser there is priority queue implemented as binary heap with these functions.
+                                </p>
+
+                                <div class="subsection">
+                                    <h3 id="heapify-down" class="anchor">Heapify-down</h3>
+                                    <p>
+                                        Rearrange a heap to maintain the heap property downwards.
+                                        If the node is not greater than or equal to its children, swap it with the greater child, then recursively heapify-down that child's subtree.
+                                        <a href="http://www.cs.rutgers.edu/~mlittman/courses/Archive/cps130-97/lectures/lect08/node17.html" class="reference">Michael L. Littman</a>
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ * @param {BinaryTreeNode} node
+ */
+function heapifyDown(tree, node) {
+    var left = node.getLeft();
+    var right = node.getRight();
+    var greaterChild;
+    
+    if(node.isLeaf()) { // no child, end
+        return;
+    }
+    
+    // get greater child
+    if(left != null &amp;&amp; right != null) { // both child, compare child
+        if(left.getValue() >= right.getValue()) {
+            greaterChild = left;    
+        } else {
+            greaterChild = right;
+        }
+    } else { // just left child
+        greaterChild = left;
+    }
+    
+    // swap and continue
+    if(greaterChild.getValue() > node.getValue()) {
+        tree.swapNodes(node, greater);
+        heapifyDown(tree, node);
+    }
+}</pre>
+                                </div>          
+
+                                <div class="subsection">
+                                    <h3 id="heapify-up" class="anchor">Heapify-up</h3>
+                                    <p>
+                                        Rearrange a heap to maintain the heap property upwards.
+                                        If the node is greater than its parent, swap these nodes, then recursively heapify-up the parent that changed (originally the given node).
+                                        <a href="http://www.cs.rutgers.edu/~mlittman/courses/Archive/cps130-97/lectures/lect08/node18.html" class="reference">Michael L. Littman</a>
+                                    </p>
+                                    <pre class="prettyprint">  
+/**
+ * @param {BinaryTree} tree
+ * @param {BinaryTreeNode} node
+ */
+function heapifyUp(tree, node) {    
+    var parent = node.getParent();
+
+    if(parent == null) {
+        return;
+    }
+
+    // swap and continue
+    if(parent.getValue() &lt; node.getValue()) {
+        tree.swapNodes(this.node, parent);
+        heapifyUp(node);
+    }
+}</pre>
+                                </div>                              
+
+                                <div class="subsection">
+                                    <h3 id="random_binary_heap" class="anchor">Random Binary Heap</h3>
+                                    <p>
+                                        Generate a new random binary heap.
+                                        This is my own algorithm written for this application. <em>This is not a general generator</em> of random binary heaps.
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ * @param {Number} min
+ * @param {Number} max
+ */
+function randomHeap(tree, min, max) {
+
+    var count = randomInt(1, Math.min(max - min + 1, 31));    
+    var numbers = new Array(max - min + 1);
+    var array = new Array();
+    // generate array of random non identic numbers of scale
+    for(var i = 0; i &lt; count; i++) { 
+        do{
+            array[i] = randomInt(Math.ceil(min), Math.floor(max));
+        } while (numbers[array[i] - min] == true);
+        numbers[array[i] - min] = true;
+    }
+
+    buildHeap(tree, array);
+}</pre>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3 id="build_heap" class="anchor">Build Heap</h3>
+                                    <p>
+                                        Convert an array into a heap by executing heapify-down progressively closer to the root.<a href="http://xlinux.nist.gov/dads/HTML/buildHeap.html" class="reference">Paul E. Black</a>
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ * @param {Number[]} array
+ */
+function buildHeap(tree, array) {
+
+    tree.build(array);
+
+    // use heapify-down from half of the tree to root
+    for(var i = Math.floor(array.length/2) - 1; i >= 0; i--) {
+        heapifyDown(tree, tree.getNode(i));
+    }
+}</pre>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3 id="bh_insert" class="anchor">Insert</h3>
+                                    <p>
+                                        The new node is initially appended to the end of the heap.
+                                        The heap property is repaired by comparing the added node with its parent and swapping them if added node is grater than its parent.   
+                                        The comparison is repeated until the parent is larger than or equal to the percolating element.<a href="http://www.cs.cmu.edu/~adamchik/15-121/lectures/Binary%20Heaps/heaps.html" class="reference">Victor Adamchik</a>
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ * @param {Number} value
+ */
+function insert(tree, value) {
+    node = new BinaryTreeNode(value); 
+    
+    if(tree.getRoot() == null) { // empty tree
+        tree.setRoot(node);
+        return;
+    }
+
+    var index = tree.getCount();
+    var parentIndex = Math.floor((index-1)/2);
+    var parent = tree.getNode(parentIndex);
+    if(index % 2 == 1) { // left
+        parent.setLeft(node);
+    } else { // right
+        parent.setRight(node);
+    }
+
+    // maintain the heap property
+    heapifyUp(node);
+}</pre>
+                                </div>             
+
+                                <div class="subsection">
+                                    <h3 id="bh_delete" class="anchor">Delete</h3>
+                                    <p>
+                                        Remove the node and replace it with the last element of the heap and then restore the heap property. 
+                                        It is necessary to check for both up- and downshifts. For example when the "last" node takes up the vacant spot, it can be over- or underevaluated. It can't be both, for obvious reasons.
+                                        <a href="http://www.cs.cmu.edu/~adamchik/15-121/lectures/Binary%20Heaps/heaps.html" class="reference">Victor S.Adamchik</a>
+                                        <a href="http://stackoverflow.com/questions/7582887/deletion-in-binary-heap" class="reference">Gaminic</a>
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ * @param {BinaryTreeNode} node
+ */
+function delete(tree, node) {
+    if(tree.getRoot == node) {
+        tree.setRoot(null);
+        return;
+    }
+
+    // swap selected and last
+    var last = tree.getNode(tree.getCount() - 1);
+    if(node != last) {
+        tree.swapNodes(node, last);
+    }
+    
+    if(node.getParent().getLeft() == node) { // left
+        node.getParent().setLeft(null);
+    } else { // right
+        node.getParent().setRight(null);
+    }
+
+    // heapify last, it is necessary to check for both ways, 
+    // but only one heapify is done, the other end at the first comparison
+    heapifyUp(tree, last);
+    heapifyDown(tree, last);
+}</pre>
+                                </div> 
+
+                                <div class="subsection">
+                                    <h3 id="bh_get_max" class="anchor">Get Max</h3>
+                                    <p>
+                                        The heap property ensures the root is always maximum node.
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ */
+function getMax(tree) {
+    return tree.getRoot();
+}</pre>                                    
+                                </div>                                    
+
+
+                                <div class="subsection">
+                                    <h3 id="extract_max" class="anchor">Extract Max</h3>
+                                    <p>
+                                        Same as delete the root node. Root is always maximum node (the heap property).
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ */
+function extractMax(tree) {
+
+    var max = tree.getRoot();    
+    if(max != null) {
+        delete(tree, max);
+    }
+    
+    return max;
+}</pre>
+                                </div>
+
+
+
+                                <div class="subsection">
+                                    <h3 id="heap_sort" class="anchor">Heap Sort</h3>
+                                    <p>
+                                        A sort algorithm that repeatedly extracts the maximum from heap.<a href="http://xlinux.nist.gov/dads/HTML/heapSort.html" class="reference">Paul E. Black</a>
+                                        This implementation delete the whole tree and nodes are sorted in an array.
+                                    </p>
+                                    <pre class="prettyprint">
+/*
+ * @param {BinaryTree} tree
+ */
+function heapSort(tree) {    
+    var array = new Array();
+
+    while(tree.getRoot() != null) {
+        array.push(extractMax(tree));
+    }
+
+    array.reverse();
+    return array;
+}</pre>
+                                </div>      
+                            </div>
+
+                            <div class="subsection">
+                                <h2 id="binary_search_tree" class="anchor">Binary Search Tree</h2>
+                                <p>
+                                    A <strong>binary search tree</strong> is a type of binary tree where the nodes are arranged in order:
+                                    for each node, all nodes in its left subtree are <em>less than</em> the node,
+                                    and all the nodes in its right subtree are <em>greater than or equal to</em> the node.
+                                    Recursively, each of the subtrees must also obey the binary search tree constraint.<a href="http://cslibrary.stanford.edu/110/BinaryTrees.html" class="reference">Nick Parlante</a>
+                                </p>
+
+                                <div class="subsection">
+                                    <h3 id="random_binary_search_tree" class="anchor">Random Binary Search Tree</h3>
+                                    <p>
+                                        Generate a new random binary search tree.
+                                        This is my own algorithm written for this application. <em>This is not a general generator</em> of random binary trees.
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ * @param {Number} min
+ * @param {Number} max
+ */
+function randomBSTree(tree, min, max) {
+
+        var epsilon = (max - min)/4;
+
+        tree.setRoot(new BinaryTreeNode(randomInt(Math.floor(min+epsilon), Math.ceil(max-epsilon))));
+    
+        randomBSTreeRec(tree.getRoot(), 1, min, max);
+    }  
+}   
+
+/**
+ * @param {BinaryTreeNode} node
+ * @param {Number} level
+ * @param {Number} min
+ * @param {Number} max
+ */
+function randomBSTreeRec(node, level, min, max) {
+
+    if(min >= node.getValue() - 1 || node.getValue() + 1 >= max) { // safety
+        return;
+    }
+    
+    var chance;
+    if(level &lt;= 3 &amp;&amp; Math.random() &lt; 0.33) { // make both child - generated tree is fuller
+        chance = 1.0;
+    } else {
+        switch(level) {
+            case 1: chance = 0.95; break;
+            case 2: chance = 0.5; break; 
+            case 3: chance = 0.3; break;
+            case 4: chance = 0.1; break;            
+            default: chance = 0.0; break; // no node at higher levels
+        }
+    }
+    
+    var epsilon = (max - min)/4;
+    
+    // left child
+    if(chance > Math.random()) {
+        node.setLeft(new BinaryTreeNode(randomInt(Math.floor(min + epsilon), Math.ceil(node.getValue() - epsilon))));
+        if(node.getLeft().getValue() == min) {
+            min += 1;
+        }
+        randomBSTreeRec(node.getLeft(), level + 1, min, node.getValue() - 1);
+    }
+    
+    // right child
+    if(chance > Math.random()) {
+        node.setRight(new BinaryTreeNode(randomInt(Math.floor(node.getValue() + epsilon), Math.ceil(max - epsilon))));
+        if(node.getRight().getValue() == max) {
+            max -= 1;
+        }
+        randomBSTreeRec(node.getRight(), level + 1, node.getValue() + 1, max);
+    }
+}</pre>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3 id="bst_insert" class="anchor">Insert</h3>
+                                    <p>
+                                        Insert algorithm traverses the tree, choosing appropriate way to go
+                                        by comparing value of each visited node with the new value, following the binary search tree property.
+                                        Following this simple rule, the algorithm reaches a node, which has not a subtree to go. 
+                                        Appended new node here.<a href="http://www.algolist.net/Data_structures/Binary_search_tree/Insertion" class="reference">algolist.net</a>
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ * @param {Number} value
+ */
+function insert(tree, value) {
+    var newNode = new BinaryTreeNode(value); 
+
+    if(tree.getRoot() == null) { // empty tree
+        tree.setRoot(node);
+        return;
+    }
+
+    var node = tree.getRoot();
+    while(true) {
+        if(newNode.getValue() >= node.getValue()) { // right subtree
+            node = node.getRight();
+            if(node == null) {
+                node.setRight(newNode); // insert
+                break; // end
+            }
+        } else { // left subtree
+            node = node.getLeft();
+            if(node == null) { 
+                node.setLeft(newNode); // insert
+                break; end
+            }
+        }
+    }    
+}</pre>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3 id="find" class="anchor">Find</h3>
+                                    <p>
+                                        Search algorithm traverses the tree, choosing appropriate way to go
+                                        by comparing value of each visited node with the searched value, following the binary search tree property.
+                                        Algorithm stops if a node with necessary value is found or the algorithm has no way to go.<a href="http://www.algolist.net/Data_structures/Binary_search_tree/Lookup" class="reference">algolist.net</a>
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ * @param {Number} value
+ * @return {BinaryTreeNode}
+ */
+function find(tree, value) {
+    
+    var node = tree.getRoot();
+    while(true) {
+        if(node.getValue() == node.getValue()) { // found
+            return node; 
+        }
+
+        if(node.getValue() > node.getValue()) { // right
+            if(node.getRight() == null) { // not found
+                break;
+            } else { // next comparison
+                node = node.getRight();
+            }
+        } else { // left
+            if(node.getLeft() == null) { // not found
+                break;
+            } else { // next comparison
+                node = node.getLeft();
+            }
+        }
+    }   
+
+    return null; // not found
+}</pre>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3 id="bst_delete" class="anchor">Delete</h3>
+                                    <p>
+                                        There are three cases:
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            Node to be removed has no children: Algorithm sets corresponding link of the parent to NULL.
+                                        </li>
+                                        <li>
+                                            Node to be removed has one child: In this case, node is cut from the tree 
+                                            and algorithm links single child (with it's subtree) directly to the parent of the removed node.
+                                        </li>
+                                        <li>
+                                            Node to be removed has two children: In this case node to be removed is swapped with its successor 
+                                            (in that case it is minimum from right subtree). Then it is deleted as node with no or one child 
+                                            because minimum of subtree cannot have tho children.<a href="http://www.algolist.net/Data_structures/Binary_search_tree/Removal" class="reference">algolist.net</a>
+                                        </li>
+                                    </ul>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ * @param {BinaryTreeNode} node
+ */
+function delete(tree, node) {
+
+    if(node.getLeft() != null  &amp;&amp; node.getRight() != null) { // both children
+        var successor = getSuccessor(node);
+        tree.swapNodes(node, successor);
+    } // continue normally - delete node
+    
+    // now just one or no child
+    if(node.getLeft() != null) { // just left child
+
+        var leftSubtreeRoot = node.getLeft();
+        if(node.isRoot()) { // is root, no parent, set tree root
+            node.setLeft(null);
+            tree.setRoot(leftSubtreeRoot);
+        } else {
+            if(node.getParent().getLeft() == node) { // left child
+                node.getParent().setLeft(leftSubtreeRoot);
+            } else { // right child
+                node.getParent().setRight(leftSubtreeRoot); 
+            }
+        }
+    }
+    else if(node.getRight() != null) { // just right child
+        
+        var rightSubtreeRoot = node.getRight();
+        if(node.isRoot()) { // is root, no parent, set tree root
+            node.setRight(null);
+            tree.setRoot(rightSubtreeRoot);
+        } else {
+            if(node.getParent().getLeft() == node) { // left child
+                node.getParent().setLeft(rightSubtreeRoot);
+            } else { // right child
+                node.getParent().setRight(rightSubtreeRoot); 
+            }
+        }
+    }
+    else { // no child
+        if(node.isRoot()) { // is root, no parent, set tree root
+            tree.setRoot(null);
+        } else {
+            if(node.getParent().getLeft() === node) { // left child
+                node.getParent().setLeft(null);
+            } else { // right child
+                node.getParent().setRight(null);
+            }
+        }
+    }
+}</pre>
+                                </div>                                
+
+                                <div class="subsection">
+                                    <h3 id="get_max" class="anchor">Get Max</h3>
+                                    <p>
+                                        The binary search tree property ensures the maximum node is always the most right one.
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTreeNode} root Root of (sub)tree.
+ */
+function getMax(root) {
+    
+    var max = root;
+    while(max.getRight() != null) {
+        max = max.getRight();
+    }
+
+    return max;
+}</pre>
+                                </div>                                
+
+                                <div class="subsection">
+                                    <h3 id="get_min" class="anchor">Get Min</h3>
+                                    <p>
+                                        The binary search tree property ensures the minimum node is always the most left one.
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTreeNode} root Root of (sub)tree.
+ */
+function getMin(root) {
+
+    var min = root;
+    while(min.getLeft() != null) {
+        min = min.getLeft();
+    }
+
+    return min;
+}</pre>
+                                </div>                                
+
+                                <div class="subsection">
+                                    <h3 id="get_predecessor" class="anchor">Get Predecessor</h3>
+                                    <p>
+                                        See <a href="#get_successor">get successor</a> algorithm.
+                                        Get predecessor is similar, but look for maximum of left subtree or ancestor from right.</p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTreeNode} node
+ */
+function getPredecessorAlg(node) {
+
+    if(node.getLeft() != null) { // has left subtree
+        return getMax(node.getLeft()); // return max of left subtree of given node
+    }
+    else { // no left subtree, try find predecessor in ancestors
+        
+        var child = node;
+        var parent = node.getParent();
+        while(true) {
+            if(parent == null) { // no parent, no predecessor
+                return null; // no predecessor found
+            }
+
+            if(parent.getRight() == child) { // arrived from right
+                return parent; // predecessor found
+            }
+
+            // next loop
+            child = parent;
+            parent = parent.getParent();
+        }
+    }
+}</pre>
+                                </div>                                
+
+                                <div class="subsection">
+                                    <h3 id="get_successor" class="anchor">Get Successor</h3>
+
+                                    There are two options:
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                1. The node has a right subtree.<br/>
+                                                The next larger node must be in the right subtree.
+                                                Since all nodes in a right subtree are larger than or equal to the given node,
+                                                the successor must be the smallest of all those nodes (minimum of right subtree).
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                2. The node does not have a right subtree.<br/>
+                                                In this case we will have to look up the tree since that's the only place we might find the next larger node.
+                                                There is no point looking at the left subtree as all nodes in the left subtree are guaranteed to be smaller than the given node.
+                                                <br/>
+                                                When we look up from the given node, there can be two cases.
+
+                                                First, the current node is the left child of its parent. In this case the parent is the successor node.
+                                                This is because the parent always comes next in in-order traversal if you are done with left subtree (rooted at the current node).
+
+                                                Second, the current node is the right child of the parent.
+                                                This is an interesting case. In this case, as you keep going up the ancestor chain 
+                                                you encounter smaller values if you are going up but larger values if you are going right.
+                                                The successor node will be the first node up the ancestor chain that you encounter on the right chain.<a href="http://www.quora.com/Data-Structures/How-to-find-inorder-successor-and-predecessor-in-a-Binary-Search-Tree" class="reference">Golam Kawsar</a>                                        
+                                            </p>
+                                        </li>
+                                    </ul>   
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTreeNode} node
+ */
+function getSuccessorAlg(node) {
+
+    if(node.getRight() != null) { // has left subtree
+        return getMin(node.getRight()); // return min of right subtree of given node
+    }
+    else { // no right subtree, try find successor in ancestors
+        
+        var child = node;
+        var parent = node.getParent();
+        while(true) {
+            if(parent == null) { // no parent, no successor
+                return null; // no successor found
+            }
+
+            if(parent.getLeft() == child) { // arrived from left
+                return parent; // successor found
+            }
+
+            // next loop
+            child = parent;
+            parent = parent.getParent();
+        }
+    }
+}</pre>
+                                </div>                                
+
+                                <div class="subsection">
+                                    <h3 id="to_preorder_array" class="anchor">To Pre-order Array</h3>
+                                    <p>
+                                        To traverse a tree data structure is to process every node exactly once. However you may "pass through" a node many times.
+                                        For pre-order walk process node itself, recursively traverse its left subtree, recursively traverse its right subtree.<a href="http://webdocs.cs.ualberta.ca/~holte/T26/tree-traversal.html" class="reference">Robert Holte</a>
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ */
+function toPreorderArray(tree) {
+    var array = new Array();
+
+    var node = tree.getRoot();
+    if(node == null) {
+        return array; // empty tree
+    } 
+
+    array.push(node);
+    toPreorderArrayRec(node.getLeft(), array);
+    toPreorderArrayRec(node.getRight(), array);
+
+    return array;
+}   
+
+/**
+ * @param {BinaryTreeNode} node
+ * @param {BinaryTreeNode[]} array
+ */
+function toPreorderArrayRec(node, array) {
+    if(node == null) {
+        return;
+    }
+
+    array.push(node);
+    toPreorderArrayRec(node.getLeft(), array);
+    toPreorderArrayRec(node.getRight(), array);
+}</pre>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3 id="to_inorder_array" class="anchor">To In-order (Sorted) Array</h3>
+                                    <p>
+                                        To traverse a tree data structure is to process every node exactly once. However you may "pass through" a node many times.
+                                        For in-order walk recursively traverse node's left subtree, process node itself, recursively traverse node's right subtree.<a href="http://webdocs.cs.ualberta.ca/~holte/T26/tree-traversal.html" class="reference">Robert Holte</a>
+                                    </p>
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ */
+function toInorderArray(tree) {
+    var array = new Array();
+
+    var node = tree.getRoot();
+    if(node == null) {
+        return array; // empty tree
+    } 
+
+    toInorderArrayRec(node.getLeft(), array);
+    array.push(node);
+    toInorderArrayRec(node.getRight(), array);
+
+    return array;
+}   
+
+/**
+ * @param {BinaryTreeNode} node
+ * @param {BinaryTreeNode[]} array
+ */
+function toInorderArrayRec(node, array) {
+    if(node == null) {
+        return;
+    }
+
+    toInorderArrayRec(node.getLeft(), array);
+    array.push(node);
+    toInorderArrayRec(node.getRight(), array);
+}</pre>
+                                </div>                                
+
+                                <div class="subsection">
+                                    <h3 id="to_postorder_array" class="anchor">To Post-order Array</h3>
+                                    <p>
+                                        To traverse a tree data structure is to process every node exactly once. However you may "pass through" a node many times.
+                                        For post-order walk recursively traverse node's left subtree, traverse node's right subtree, process node itself.<a href="http://webdocs.cs.ualberta.ca/~holte/T26/tree-traversal.html" class="reference">Robert Holte</a>
+                                    </p>                                
+                                    <pre class="prettyprint">
+/**
+ * @param {BinaryTree} tree
+ */
+function toPostorderArray(tree) {
+    var array = new Array();
+
+    var node = tree.getRoot();
+    if(node == null) {
+        return array; // empty tree
+    } 
+
+    toPostorderArrayRec(node.getLeft(), array);
+    toPostorderArrayRec(node.getRight(), array);
+    array.push(node);
+
+    return array;
+}   
+
+/**
+ * @param {BinaryTreeNode} node
+ * @param {BinaryTreeNode[]} array
+ */
+function toPostorderArrayRec(node, array) {
+    if(node == null) {
+        return;
+    }
+
+    toPostorderArrayRec(node.getLeft(), array);
+    toPostorderArrayRec(node.getRight(), array);
+    array.push(node);
+}</pre>
+                                </div>
+
+                            </div>  
+                        </div>
+                        <div class="clear"></div> 
+                    </div>  
+                    <!-- end content -->  
+                    <div class="clear" style="height:40px"></div> 
+                </div>  
+                <!-- end container --> 
+            </div> 
+        </div>
+        <div id="bottomWrapper">  
+            <div id="bottom-links"> 
+                <div style="padding-top:20px"> 
+                    <!-- 
+          DO NOT REMOVE OR MODIFY THE FOOTER LINK BELOW.
+          If you want to remove this link please make a 10 dollars donation at www.dotemplate.com
+                    -->  
+                    <a href="http://www.dotemplate.com" shape="rect">Templates</a> maker
+                </div> 
+            </div> 
+        </div> 
+    </body>
+</html>

@@ -1,0 +1,121 @@
+{% extends 'layout.html' %}
+{% block title %}语法练习{% endblock %}
+{% block body %}
+
+<div class="row" >
+    <div class="col-md-2">
+        
+    </div>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+    <button type="button" id=run class="btn btn-success" style="margin-bottom:15px">
+        <h5>Run</h5>
+    </button>
+    <button type="button" id=clear class="btn btn-success" style="margin-bottom:15px">
+        <h5>Clear</h5>
+    </button>
+</div>
+
+<div class="row" >
+    <div class="col-md-2">
+        <h4 class="bg-white">简单算法练习</h4>
+        <ul class="list-group">
+            <li class="list-group-item">分糖果</li>
+            <li class="list-group-item" onclick="javascript:alert('id')">国王发金币</li>
+            <li class="list-group-item">Python中如何求阶乘</li>
+            <li class="list-group-item">贪心算法-找零钱</li>
+            <li class="list-group-item">动态规划-找零钱</li>
+            <li class="list-group-item">贪心算法-背包问题</li>
+            <li class="list-group-item">动态规划-背包问题</li>
+            <li class="list-group-item">回溯算法-背包问题</li>
+            <li class="list-group-item">树</li>
+            <li class="list-group-item">决策树算法</li>
+            <li class="list-group-item">算法</li>
+        </ul>
+    </div>
+    <div class="col-md-2">
+        <div class="card">
+            <div class="card-header">内容说明</div>
+            <div class="card-body bg-info text-white" style="height:455px">
+                <div id="content">
+                    点击左侧链接，查看内容说明！
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4" style="background-color: #dedef8;
+        box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+         <section class="input">
+             <ul class="nav nav-tabs">
+                 <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" style="border:1px solid blue">
+                         <h4>编辑窗口</h4>
+                     </a>
+                 </li>
+             </ul>
+             <div><textarea id="code" name="code">
+             </textarea>
+             </div>
+         </section>
+    </div>
+    <div class="col-md-4" style="background-color: #dedef8;
+    box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+        <section class="output">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" style="border:1px solid blue">
+                        <h4 >输出窗口</h4>
+                    </a>
+                </li>
+            </ul>
+            <div>
+                <textarea id="output" name="output" class="w-100" rows="18">
+                </textarea>
+            </div>
+        </section>
+     </div>
+ </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"
+integrity="sha512-XMlgZzPyVXf1I/wbGnofk1Hfdx+zAWyZjh6c21yGo/k1zNC4Ve6xcQnTDTCHrjFGsOrVicJsBURLYktVEu/8vQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/mode/python/python.min.js"
+integrity="sha512-/mavDpedrvPG/0Grj2Ughxte/fsm42ZmZWWpHz1jCbzd5ECv8CB7PomGtw0NAnhHmE/lkDFkRMupjoohbKNA1Q=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script>
+const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+	mode: {
+		name: "python",
+		version: 3,
+		singleLineStringErrors: false
+	},
+	lineNumbers: true,
+	indentUnit: 4,
+	matchBrackets: true
+});
+editor.setSize('auto',436);
+editor.setValue(`print("hello python!")`);
+
+$(document).ready(function() {
+    $("#run").click(function() {
+        var code = editor.getValue();
+        $.ajax({
+            type: "POST",
+            url: "/exec",
+            data: { code: code},
+            success: function(output) {
+            $("#output").html(output);
+            }
+        });
+    });
+    $("#clear").click(function() {
+        $("#output").html('');
+    });
+});
+</script>
+{% endblock %}

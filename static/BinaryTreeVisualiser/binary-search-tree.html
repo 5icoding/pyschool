@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>BinaryTreeVisualiser - Binary Search Tree</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="title" content="Web site" />
+        <meta name="description" content="Site description here" />
+        <meta name="keywords" content="keywords here" />
+        <meta name="language" content="en" />
+        <meta name="subject" content="Site subject here" />
+        <meta name="robots" content="All" />
+        <meta name="copyright" content="Your company" />
+        <meta name="abstract" content="Site description here" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+
+        <!-- styles -->
+        <link id="theme" rel="stylesheet" type="text/css" href="styles/style.css" title="theme" />
+        <script type="text/javascript" src="styles/style.js"></script>
+        <link href="styles/jquery/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+
+        <!-- third-party scripts: jQuery, jQuery UI and JSGL -->
+        <script type="text/javascript" src="btv/third-party/jsgl.js"></script>
+        <script type="text/javascript" src="btv/third-party/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="btv/third-party/jquery-ui-1.10.3.custom.js"></script>
+
+        <!-- my scripts -->
+        <script type="text/javascript" src="btv/btv.js"></script>
+        <script type="text/javascript" src="btv/Elements.js"></script>
+        <script type="text/javascript" src="btv/BinaryTree.js"></script>
+        <script type="text/javascript" src="btv/Algorithms.js"></script>
+        <script type="text/javascript" src="btv/Visualiser.js"></script>
+        <script type="text/javascript" src="btv/Controllers.js"></script>
+
+    </head>
+    <body> 
+        <!-- top wrapper -->  
+        <div id="topWrapper"> 
+            <div id="topBanner"></div> 
+        </div>  
+        <div id="topnav"> 
+            <ul>
+                <li>
+                    <a href="home.html" shape="rect">Home</a>
+                </li>
+                <li>
+                    <a href="binary-heap.html" shape="rect">Binary Heap</a>
+                </li>
+                <li id="current">
+                    <a href="binary-search-tree.html" shape="rect">Binary Search Tree</a>
+                </li>
+                <li>
+                    <a href="pseudocodes.html" shape="rect">Pseudocodes</a>
+                </li>
+                <li>
+                    <a href="instructions.html" shape="rect">Instructions</a>
+                </li>
+            </ul> 
+        </div>  
+        <!-- end top wrapper -->  
+        <div id="wrapper"> 
+            <div id="container"> 
+                <!--  content -->  
+                <div id="content"> 
+                    <div style="margin-top:20px;">   
+                        <div class="clear"></div>
+
+                        <h1 id="binary_search_tree" class="anchor">Binary Search Tree</h1>
+
+                        <div id="controlDiv"></div>
+                        <div id="drawDiv"></div>
+
+                        <script type="text/javascript">
+                            var c = new btv.BinarySearchTreeController(document.getElementById("controlDiv"), document.getElementById("drawDiv"));            
+                        </script>
+
+                        <div class="clear"></div>
+
+                        <div class="subsection">
+                            <h2 id="graphic_elements" class="anchor left_clear">Graphic elements</h2>
+                            <p>
+                                There are listed all graphic elements used in this application and their meanings.
+                            </p>
+                            <table class="instructions">    
+                                <thead>
+                                    <tr>
+                                        <th class="graphicElement">Graphic</th>
+                                        <th>Meaning</th>
+                                        <th>Description</th >
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="graphicElement">
+                                            <img src="images/instructions/node.png" alt="node"/>
+                                        </td>
+                                        <td class="meaning">Node</td>
+                                        <td>
+                                            Node with his value.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="graphicElement">
+                                            <img src="images/instructions/selected_node.png" alt="node"/>
+                                        </td>
+                                        <td class="meaning">Selected node</td>
+                                        <td>
+                                            Selected node is highlighted with red stroke. You can select a node by clicking on it.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="graphicElement">
+                                            <img src="images/instructions/edge.png" alt="node"/>
+                                        </td>
+                                        <td class="meaning">Edge</td>
+                                        <td>
+                                            An edge is a reference from one node to another.
+                                            Referenced node is called child of referring node.
+                                            Referring node is called parent of referenced node.
+                                        </td>
+                                    </tr>                                
+                                    <tr>
+                                        <td class="graphicElement">
+                                            <img src="images/instructions/parent_with_children.png" alt="node"/>
+                                        </td>
+                                        <td class="meaning">Parent and his children</td>
+                                        <td>
+                                            In binary trees there are maximum two children of any node - left child and right child.
+                                        </td>
+                                    </tr>                                
+                                    <tr>
+                                        <td class="graphicElement">
+                                            <img src="images/instructions/comparison_signs.png" alt="node"/>
+                                        </td>
+                                        <td class="meaning">Comparison signs</td>
+                                        <td>
+                                            Very often algorithms compare two nodes (their values). 
+                                            In that case one of this sign will be shown in the middle of them.
+                                        </td>
+                                    </tr>                                                                
+                                    <tr>
+                                        <td class="graphicElement">
+                                            <img src="images/instructions/continue_in_parent,left_child,right_child.png" alt="node"/>
+                                        </td>
+                                        <td class="meaning">Continue in parent/<wbr/>left&nbsp;child/<wbr/>right child</td>
+                                        <td>
+                                            Algorithms usually traverse a tree or recursively call themselves on one child of just processing node.
+                                            These graphic elements will show you which node is next in line.
+                                        </td>
+                                    </tr>  
+                                    <tr>
+                                        <td class="graphicElement">
+                                            <img src="images/instructions/no_left,right_child.png" alt="node"/>
+                                        </td>
+                                        <td class="meaning">No left/<wbr/>right child</td>
+                                        <td>
+                                            A node do not have left/right child.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="graphicElement"><img src="images/instructions/enter,leave_tree.png" alt="node"/></td>
+                                        <td class="meaning">Enter/<wbr/>Leave tree</td>
+                                        <td>
+                                            A start/end visualisation of an algorithms that traverse a tree.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="graphicElement">
+                                            <img src="images/instructions/came_from_the_left,right.png" alt="node"/>
+                                        </td>
+                                        <td class="meaning">Came from left/<wbr/>right child</td>
+                                        <td>
+                                            Sometimes it is important if an algorithm came from left or right child.
+                                            These arrows indicate that the condition is satisfied.
+                                        </td>
+                                    </tr>                                  
+                                    <tr>
+                                        <td class="graphicElement">
+                                            <img src="images/instructions/did_not_come_from_the_left,right.png" alt="node"/>
+                                        </td>
+                                        <td class="meaning">Did not come from left/<wbr/>right child</td>
+                                        <td>
+                                            As previous, but the condition is not satisfied.
+                                        </td>
+                                    </tr>                                                                  
+                                    <tr>
+                                        <td class="graphicElement"><img src="images/instructions/array.png" alt="node"/></td>
+                                        <td class="meaning">Array</td>
+                                        <td>
+                                            A tree can be represented by an array, can be transformed to the array or can be build from the array. 
+                                            Array is indexed (1, 2, 3, ... 7) and has values (2, 5, 22, 39, 44). Last two indexes are still empty.
+                                        </td>
+                                    </tr>   
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>  
+                    <div class="clear"></div> 
+                </div>  
+                <!-- end content -->  
+                <div class="clear" style="height:40px"></div> 
+            </div>  
+            <!-- end container --> 
+        </div>  
+        <div id="bottomWrapper">  
+            <div id="bottom-links"> 
+                <div style="padding-top:20px"> 
+                    <!-- 
+                        DO NOT REMOVE OR MODIFY THE FOOTER LINK BELOW.
+                        If you want to remove this link please make a 10 dollars donation at www.dotemplate.com
+                    -->  
+                    <a href="http://www.dotemplate.com" shape="rect">Templates</a> maker
+                </div> 
+            </div> 
+        </div> 
+    </body>
+</html>

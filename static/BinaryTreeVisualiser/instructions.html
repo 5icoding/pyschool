@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <title>BinaryTreeVisualiser - Instruction</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="title" content="Web site" />
+        <meta name="description" content="Site description here" />
+        <meta name="keywords" content="keywords here" />
+        <meta name="language" content="en" />
+        <meta name="subject" content="Site subject here" />
+        <meta name="robots" content="All" />
+        <meta name="copyright" content="Your company" />
+        <meta name="abstract" content="Site description here" />
+        <meta name="MSSmartTagsPreventParsing" content="true" />
+
+        <!-- styles -->
+        <link id="theme" rel="stylesheet" type="text/css" href="styles/style.css" title="theme" />
+        <script type="text/javascript" src="styles/style.js"></script>
+        <link href="styles/jquery/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+
+        <!-- third-party scripts: jQuery, jQuery UI -->
+        <script type="text/javascript" src="btv/third-party/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="btv/third-party/jquery-ui-1.10.3.custom.js"></script>
+    </head>
+    <body> 
+        <!-- top wrapper -->  
+        <div id="topWrapper"> 
+            <div id="topBanner"></div> 
+        </div>  
+        <div id="topnav"> 
+            <ul>
+                <li>
+                    <a href="home.html" shape="rect">Home</a>
+                </li>
+                <li>
+                    <a href="binary-heap.html" shape="rect">Binary Heap</a>
+                </li>
+                <li>
+                    <a href="binary-search-tree.html" shape="rect">Binary Search Tree</a>
+                </li>
+                <li>
+                    <a href="pseudocodes.html" shape="rect">Pseudocodes</a>
+                </li>
+                <li id="current">
+                    <a href="instructions.html" shape="rect">Instructions</a>
+                </li>
+            </ul> 
+        </div>  
+        <!-- end top wrapper -->  
+        <div id="wrapper"> 
+            <div id="container">
+
+                <!--  content -->  
+                <div id="content"> 
+                    <div style="margin-top:20px;">   
+                        <div class="clear"></div>  
+
+                        <div id="quickmenu">
+                            <span class="quickmenu_header">Quick menu:</span>
+                            <ul>
+                                <li><a href="#graphic_elements">Grapgic elements</a></li>
+                                <li><a href="#controls">Controls</a>
+                                    <ul>
+                                        <li><a href="#animation_controls">Animation controls</a></li>
+                                        <li><a href="#algorithms_controls">Algorithms controls</a></li>
+                                        <li><a href="#history_controls">History controls</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="section"> 
+                            <h1 id="instructions" class="anchor left_clear">Instructions</h1>
+                            <p>
+                                There you find how to use <strong>BinaryTreeVisualiser</strong>.
+                                <br/>
+                                Application is consisted of two pages.
+                                <a href="binary-heap.html">At the first one</a> you find <strong>binary heap + priority queue</strong> implementation 
+                                (random binary heap, build binary heap, insert, delete, extract max, get max, heap sort).
+                                <a href="binary-heap.html">At the other one</a> you find <strong>binary search tree</strong> implementation 
+                                (random binary search tree, insert, find, delete, get max, get min, get predecessor, get successor, to preorder array, to inorder (sorted) array, to postorder array).
+                                <br/>
+                                If you don't know what a binary search tree, a binary heap or any of listed algorithms means, visit <a href="pseudocodes.html">this section</a>.
+                                <br/>
+                                See meanings of used <a href="#graphic_elements">graphic elements</a> to understand animations
+                                and read what <a href="#controls">control buttons</a> do for easier work with the application.
+                            </p>
+
+
+                            <div class="subsection">
+                                <h2 id="graphic_elements" class="anchor left_clear">Graphic elements</h2>
+                                <p>
+                                    There are listed all graphic elements used in this application and their meanings.
+                                </p>
+                                <table class="instructions">    
+                                    <thead>
+                                        <tr>
+                                            <th class="graphicElement">Graphic</th>
+                                            <th>Meaning</th>
+                                            <th>Description</th >
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="graphicElement">
+                                                <img src="images/instructions/node.png" alt="node"/>
+                                            </td>
+                                            <td class="meaning">Node</td>
+                                            <td>
+                                                A node with his value.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="graphicElement">
+                                                <img src="images/instructions/selected_node.png" alt="node"/>
+                                            </td>
+                                            <td class="meaning">Selected node</td>
+                                            <td>
+                                                Selected node is highlighted with a red stroke. You can select any node by clicking on it.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="graphicElement">
+                                                <img src="images/instructions/edge.png" alt="node"/>
+                                            </td>
+                                            <td class="meaning">Edge</td>
+                                            <td>
+                                                An edge is a reference from one node to another.
+                                                Referenced node is called child of referring node.
+                                                Referring node is called parent of referenced node.
+                                            </td>
+                                        </tr>                                
+                                        <tr>
+                                            <td class="graphicElement">
+                                                <img src="images/instructions/parent_with_children.png" alt="node"/>
+                                            </td>
+                                            <td class="meaning">Parent and his children</td>
+                                            <td>
+                                                In binary trees there are maximum two children of a node - left child and right child.
+                                            </td>
+                                        </tr>                                
+                                        <tr>
+                                            <td class="graphicElement">
+                                                <img src="images/instructions/comparison_signs.png" alt="node"/>
+                                            </td>
+                                            <td class="meaning">Comparison signs</td>
+                                            <td>
+                                                Very often algorithms compare two nodes (their values). 
+                                                In that case one of this sign will be shown in the middle of them.
+                                            </td>
+                                        </tr>                                                                
+                                        <tr>
+                                            <td class="graphicElement">
+                                                <img src="images/instructions/continue_in_parent,left_child,right_child.png" alt="node"/>
+                                            </td>
+                                            <td class="meaning">Continue in parent/<wbr/>left&nbsp;child/<wbr/>right child</td>
+                                            <td>
+                                                Algorithms usually traverse a tree or recursively call themselves on one child of just processing node.
+                                                These graphic elements will show you which node is next in line.
+                                            </td>
+                                        </tr>  
+                                        <tr>
+                                            <td class="graphicElement">
+                                                <img src="images/instructions/no_left,right_child.png" alt="node"/>
+                                            </td>
+                                            <td class="meaning">No left/<wbr/>right child</td>
+                                            <td>
+                                                A node do not have left/right child.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="graphicElement"><img src="images/instructions/enter,leave_tree.png" alt="node"/></td>
+                                            <td class="meaning">Enter/<wbr/>Leave tree</td>
+                                            <td>
+                                                A start/end visualisation of an algorithms that traverse a tree.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="graphicElement">
+                                                <img src="images/instructions/came_from_the_left,right.png" alt="node"/>
+                                            </td>
+                                            <td class="meaning">Came from left/<wbr/>right child</td>
+                                            <td>
+                                                Sometimes it is important if an algorithm came from left or right child.
+                                                These arrows indicate that the condition is satisfied.
+                                            </td>
+                                        </tr>                                  
+                                        <tr>
+                                            <td class="graphicElement">
+                                                <img src="images/instructions/did_not_come_from_the_left,right.png" alt="node"/>
+                                            </td>
+                                            <td class="meaning">Did not come from left/<wbr/>right child</td>
+                                            <td>
+                                                As previous, but the condition is not satisfied.
+                                            </td>
+                                        </tr>                                                                  
+                                        <tr>
+                                            <td class="graphicElement"><img src="images/instructions/array.png" alt="node"/></td>
+                                            <td class="meaning">Array</td>
+                                            <td>
+                                                A tree can be represented by an array, can be transformed to the array or can be build from the array. 
+                                                Array is indexed (1, 2, 3, ... 7) and has values (2, 5, 22, 39, 44). Last two indexes are still empty.
+                                            </td>
+                                        </tr>   
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="subsection">
+                                <h2 id="controls" class="anchor">Controls</h2>
+                                <p>
+                                    Controls are divided into three categories. You can control <a href="#animation_controls">animation</a>, execute <a href="#algorithms_controls">algorithms</a> and go back in <a href="#history_controls">history</a>.
+                                </p>
+
+                                <div class="subsection">
+                                    <h3 id="animation_controls" class="anchor">Animation controls</h3>
+                                    <p>
+                                        These buttons control <em>currently</em> playing animation and can go to previous or next animation.
+                                        There is shown only a play button or only a pause pause button at a time. 
+                                        Buttons are disabled if there is no appropriate anomation.
+                                    </p>
+                                    <table class="instructions">    
+                                        <thead>
+                                            <tr>
+                                                <th class="inputField">Button</th>
+                                                <th>Meaning</th>
+                                                <th>Description</th >
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <button id="playButtonInstr">Play</button>
+                                                    <script type="text/javascript">
+                                                        $("#playButtonInstr").button({
+                                                            icons: {
+                                                                primary: "ui-icon-play"
+                                                            },
+                                                            text: false
+                                                        });
+                                                    </script>
+                                                </td>
+                                                <td class="meaning">Play an animation</td>
+                                                <td>
+                                                    This button starts playing a paused animation. Automatically an animation is playing.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <button id="pauseButtonInstr">Pause</button>
+                                                    <script type="text/javascript">
+                                                        $("#pauseButtonInstr").button({
+                                                            icons: {
+                                                                primary: "ui-icon-pause"
+                                                            },
+                                                            text: false
+                                                        });
+                                                    </script>
+                                                </td>
+                                                <td class="meaning">Pause an animation</td>
+                                                <td>
+                                                    This button pauses playing animation.
+                                                </td>
+                                            </tr>                                   
+                                            <tr>
+                                                <td class="inputField">
+                                                    <button id="skipBackwardButtonInstr">Skip Backward</button>
+                                                    <script type="text/javascript">
+                                                        $("#skipBackwardButtonInstr").button({
+                                                            icons: {
+                                                                primary: "ui-icon-seek-start"
+                                                            },
+                                                            text: false
+                                                        });
+                                                    </script>                                                    
+                                                </td>
+                                                <td class="meaning">Play an animation again</td>
+                                                <td>
+                                                    Move an animation to the start and start playing it.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <button id="skipForwardButtonInstr">Skip Forward</button>
+                                                    <script type="text/javascript">
+                                                        $("#skipForwardButtonInstr").button({
+                                                            icons: {
+                                                                primary: "ui-icon-seek-end"
+                                                            },
+                                                            text: false
+                                                        });
+                                                    </script>                                                      
+                                                </td>
+                                                <td class="meaning">Skip an animation</td>
+                                                <td>
+                                                    Some animations take long time. This button move an animation to the end. 
+                                                    Animation is stopped so next algorithm in history (if any) will <em>not</em> be played.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <button id="previousButtonInstr">Previous</button>
+                                                    <script type="text/javascript">
+                                                        $("#previousButtonInstr").button({
+                                                            icons: {
+                                                                primary: "ui-icon-seek-prev"
+                                                            },
+                                                            text: false
+                                                        });
+                                                    </script>                                                    
+                                                </td>
+                                                <td class="meaning">Go to previous animation</td>
+                                                <td>
+                                                    Goes to previous algorithm (animation) and start playing it. 
+                                                </td>
+                                            </tr>                                     
+                                            <tr>
+                                                <td class="inputField">
+                                                    <button id="nextButtonInstr">Next</button>
+                                                    <script type="text/javascript">
+                                                        $("#nextButtonInstr").button({
+                                                            icons: {
+                                                                primary: "ui-icon-seek-next"
+                                                            },
+                                                            text: false
+                                                        });
+                                                    </script>                                                    
+                                                </td>
+                                                <td class="meaning">Go to next animation</td>
+                                                <td>
+                                                    Goes to next algorithm (animation) and start playing it.
+                                                </td>
+                                            </tr> 
+                                            <tr>
+                                                <td class="inputField">
+                                                    <input id="continuouslyCheckboxInstr" type="checkbox" checked="checked"/><label for="continuouslyCheckboxInstr">Continuously</label>
+                                                </td>
+                                                <td class="meaning">Play animations one after another</td>
+                                                <td>
+                                                    If this check box is checked, next animation will start after the end of current animation automatically.
+                                                </td>
+                                            </tr>                                            
+                                            <tr>
+                                                <td class="inputField">
+                                                    Speed of move: <div id="moveSpeedSliderInstr"></div>
+                                                    <script type="text/javascript">
+                                                        $("#moveSpeedSliderInstr").slider({
+                                                            min: 100, 
+                                                            max: 1000,    
+                                                            value: 250
+                                                        });
+                                                    </script>
+                                                </td>
+                                                <td class="meaning">Set a speed of move</td>
+                                                <td>
+                                                    There are two kind of steps of algorithms.
+                                                    Animations of the first kind take time to move a graphic element.
+                                                    Animations of the other kind take time to show something.
+                                                    This button set duration of the first kind of step.
+                                                </td>
+                                            </tr>                                             
+                                            <tr>
+                                                <td class="inputField">
+                                                    Duration of a step: <div id="stepDurationSliderInstr"></div>
+                                                    <script type="text/javascript">
+                                                        $("#stepDurationSliderInstr").slider({
+                                                            min: 100, 
+                                                            max: 2000,    
+                                                            value: 650
+                                                        });
+                                                    </script>                                                    
+                                                </td>
+                                                <td class="meaning">Set a duration of a step</td>
+                                                <td>
+                                                    As previous, but this button set duration of the other kind of step.
+                                                </td>
+                                            </tr>                                                                                                                                  
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="subsection">
+                                    <h3 id="history_controls" class="anchor">History controls</h3>
+                                    <p>
+                                        All executed algorithms are shown in history. 
+                                        You can go back and play them again or change history.
+                                    </p>
+                                    <table class="instructions">    
+                                        <thead>
+                                            <tr>
+                                                <th class="inputField">Button</th>
+                                                <th>Meaning</th>
+                                                <th>Description</th >
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <select size="6" style="overflow:auto; width: 250px">
+                                                        <option>randomTree(36, 22, 65, 1, 31, 44)</option>
+                                                        <option selected="selected">inser(value: 14)</option>
+                                                        <option>toInorderArray()</option>
+                                                    </select>
+                                                </td>
+                                                <td class="meaning">List of executed algorithms</td>
+                                                <td>
+                                                    There are listed all executed algorithms. The first one is at the top of the list. New algorithms are added to the end.
+                                                    You can change the history by playing earlier algorithm (animation) and then executing another algorithm.
+                                                    Current algorithm (animation) is selected. You can selected another one by double-click.
+                                                </td>
+                                            </tr>                                   
+                                        </tbody>
+                                    </table>
+                                </div>                                
+
+                                <div class="subsection">
+                                    <h3 id="algorithms_controls" class="anchor">Algorithms controls</h3>
+                                    <p>
+                                        These buttons are most important. Clicking on an algorithm button execute selected algorithm and start an animation.
+                                        Also the algorithm is added to <a href="#history_controls">history</a>, so you can go back to this point and play this animation again later.
+                                        <br/>
+                                        Some algorithms need an input to work. Usually it is a value or a node.
+                                        Value is entered as a string at text input. Node is selected by clicking on it.
+                                        <br/>
+                                        Some algorithms return a value. If it is a node, the node will be selected at the end of an animation.
+                                        It it is an array, the array will be shown at the end of an animation.
+                                        <br/>
+                                        These buttons are enabled only if the animation is stopped - last animation was all played.
+                                        <br/>
+                                        If you want to find out more informations about these algorithms, see <a href="pseudocodes.html">pseudocodes</a>.
+                                    </p>
+                                    <table class="instructions">    
+                                        <thead>
+                                            <tr>
+                                                <th class="inputField">Algorithm (Binary Heap)</th>
+                                                <th>Meaning</th>
+                                                <th>Description</th >
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <input type="submit" value="Random Heap"/>
+                                                    min: <input type="text" value="0" size="1"/>
+                                                    max: <input type="text" value="99" size="1"/>
+                                                </td>
+                                                <td class="meaning">Create a random heap</td>
+                                                <td>
+                                                    Creates a random binary heap.
+                                                    Values of created nodes are from given interval.                                            
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <input type="submit" value="Build Heap"/>
+                                                    array: <input type="text" size="15"/>
+                                                </td>
+                                                <td class="meaning">Build a heap</td>
+                                                <td>
+                                                    Builds a binary heap from given array.
+                                                    The array is entered as string of values separated by ',' (comma).
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <input type="submit" value="Insert"/>
+                                                    value: <input type="text" size="1"/>
+                                                </td>
+                                                <td class="meaning">Insert a node</td>
+                                                <td>
+                                                    Creates a new node with given value and inserts it into a heap. 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <input type="submit" value="Delete"/> selected node
+                                                </td>
+                                                <td class="meaning">Delete a node</td>
+                                                <td>
+                                                    Deletes selected node from a heap.
+                                                </td>
+                                            </tr>                                    
+                                            <tr>
+                                                <td class="inputField">
+                                                    <input type="submit" value="Extract Max"/>
+                                                </td>
+                                                <td class="meaning">Extract maximum value node</td>
+                                                <td>
+                                                    Same as delete of root node. 
+                                                    The node with maximum value is always root in a binary heap.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <input type="submit" value="Get max"/>
+                                                </td>
+                                                <td class="meaning">Get maximum value node</td>
+                                                <td>
+                                                    Returns root of tree, because 
+                                                    the node with maximum value is always root in a binary heap.
+                                                </td>
+                                            </tr>                                    
+                                            <tr>
+                                                <td class="inputField">
+                                                    <input type="submit" value="Heap Sort"/>
+                                                </td>
+                                                <td class="meaning">Sort a heap</td>
+                                                <td>
+                                                    This algorithm sorts a heap. The result is shown in an array.
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>    
+
+                                    <table class="instructions">    
+                                        <thead>
+                                            <tr>
+                                                <th class="inputField">Algorithm (Binary Search Tree)</th>
+                                                <th>Meaning</th>
+                                                <th>Description</th >
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="inputField">
+                                                    <input type="submit" value="Random BSTree"/>
+                                                    min: <input type="text" value="0" size="1"/>
+                                                    max: <input type="text" value="99" size="1"/>
+                                                </td>
+                                                <td class="meaning">Create a random search tree</td>
+                                                <td>
+                                                    Creates a random binary search tree.
+                                                    Values of created nodes are from given interval.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="inputField">                                        
+                                                    <input type="submit" value="Insert"/>
+                                                    value: <input type="text" size="1"/>
+                                                </td>
+                                                <td class="meaning">Insert a node</td>
+                                                <td>
+                                                    Creates a new node with given value and inserts it into a binary search tree. 
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="inputField">    
+                                                    <input type="submit" value="Find"/>
+                                                    value: <input type="text" size="1"/>
+                                                </td>
+                                                <td class="meaning">Find a node</td>
+                                                <td>
+                                                    Finds <em>first</em> occurrence of a node with given value.
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="inputField"> 
+                                                    <input type="submit" value="Delete"/> selected node
+                                                </td>
+                                                <td class="meaning">Delete a node</td>
+                                                <td>
+                                                    Deletes selected node from a binary search tree.
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="inputField"> 
+                                                    <input type="submit" value="Get Max"/> of selected (sub)tree
+                                                </td>
+                                                <td class="meaning">Get maximum value node</td>
+                                                <td>
+                                                    Finds and returns node with maximum value of selected subtree. 
+                                                    Select subtree by selecting its root.
+                                                    If no node is selected, root of whole tree will be selected.
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="inputField"> 
+                                                    <input type="submit" value="Get Min"/> of selected (sub)tree
+                                                </td>
+                                                <td class="meaning">Get minimum value node</td>
+                                                <td>
+                                                    Finds and returns node with minimum value of selected subtree. 
+                                                    Select subtree by selecting its root.
+                                                    If no node is selected, root of whole tree will be selected.
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="inputField"> 
+                                                    <input type="submit" value="Get Predecessor"/> of selected node
+                                                </td>
+                                                <td class="meaning">Get a predecessor</td>
+                                                <td>
+                                                    Gets a predecessor of selected node.
+                                                    Predecessor is a node with first previous lower value.
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="inputField"> 
+                                                    <input type="submit" value="Get Successor"/> of selected node
+                                                </td>
+                                                <td class="meaning">Get a successor</td>
+                                                <td>
+                                                    Gets a successor of selected node. 
+                                                    Successor is a node with first next higher value.                                     </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="inputField"> 
+                                                    <input type="submit" value="To Preorder Array"/>
+                                                </td>
+                                                <td class="meaning">Order nodes into an pre-order array</td>
+                                                <td>
+                                                    Traverses a tree in pre-order walk. Shows the pre-order array.
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="inputField"> 
+                                                    <input  type="submit" value="To Inorder Array"/> (To Sorted Array)
+                                                </td>
+                                                <td class="meaning">Order nodes into an in-order (sorted) array</td>
+                                                <td>
+                                                    Traverses a tree in in-order walk. Shows the in-order array.
+                                                    This array is sorted by values.
+                                                </td>
+                                            </tr>    
+                                            <tr>
+                                                <td class="inputField"> 
+                                                    <input type="submit" value="To Postorder Array"/>
+                                                </td>
+                                                <td class="meaning">Order nodes into an post-order array</td>
+                                                <td>
+                                                    Traverses a tree in post-order walk. Show the post-order array.
+                                                </td>
+                                            </tr>    
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div> 
+                    </div>  
+                    <div class="clear"></div> 
+                </div>  
+                <!-- end content -->  
+                <div class="clear" style="height:40px"></div> 
+            </div>  
+            <!-- end container --> 
+        </div>  
+        <div id="bottomWrapper">  
+            <div id="bottom-links"> 
+                <div style="padding-top:20px"> 
+                    <!-- 
+          DO NOT REMOVE OR MODIFY THE FOOTER LINK BELOW.
+          If you want to remove this link please make a 10 dollars donation at www.dotemplate.com
+                    -->  
+                    <a href="http://www.dotemplate.com" shape="rect">Templates</a> maker
+                </div> 
+            </div> 
+        </div> 
+    </body>
+</html>

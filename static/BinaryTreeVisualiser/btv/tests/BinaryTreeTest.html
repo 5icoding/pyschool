@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>QUnit Test Suite - BinaryTree.js</title>
+        
+        <!-- styles -->
+        <link rel="stylesheet" type="text/css" href="qunit-1.10.0.css" />
+        
+        <!-- QUnit framework -->
+        <!-- third-party scripts: jQuery, jQuery UI, QUnit and JSGL -->
+        <script type="text/javascript" src="../third-party/qunit-1.10.0.js"></script>
+        <script type="text/javascript" src="../third-party/jsgl.js"></script>
+        <script type="text/javascript" src="../third-party/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="../third-party/jquery-ui-1.10.3.custom.js"></script>
+        
+        <!-- Your project file goes here -->
+        <!-- third-party scripts: JSGL -->
+        <script type="text/javascript" src="../third-party/jsgl.js"></script>
+
+        <!-- my scripts -->
+        <script type="text/javascript" src="../btv.js"></script>
+        <script type="text/javascript" src="../BinaryTree.js"></script>
+
+        <!-- Your tests file goes here -->
+        <script type="text/javascript" src="BinaryTreeTest.js"></script>
+        
+        <style>
+            #trees {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            #trees td {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="trees">
+            <tr>
+                <td>
+                    <pre>
+          tree
+           |
+          nr(0)
+        /      \
+     /            \
+   n3(3)         n4(4)
+  /             /    \
+n1(1)         n5(5)  n2(2)
+             /    \
+          n6(6)  n7(7)
+                /    \
+             n8(8)   n9(9)</pre>
+                </td>
+                <td>
+                    <pre>
+ tree2
+   |
+root(-1)</pre>                    
+                </td>
+                <td>
+                    <pre>                    
+         null
+           |
+     lonelyNode0(100)
+     /
+lonelyNode1(200)</pre>                    
+                </td>
+            </tr>
+        </table>
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+    </body>
+</html>
