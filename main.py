@@ -35,6 +35,11 @@ def easyalgorithm():
 def contact():
     return render_template('contact.html')
 
+#自习室，学生自己编程的网页
+@app.route('/cubicle')
+def cubicle():
+    return render_template('cubicle.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
@@ -87,4 +92,4 @@ def class_save():
     return jsonify(data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)

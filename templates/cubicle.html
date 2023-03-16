@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- <script type="text/javascript" src="js/brython.js"></script>
+<script type="text/javascript" src="js/brython_stdlib.js"></script> -->
+
+<!-- <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/brython@3.11/brython.min.js">
+</script>
+<script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/brython@3.11/brython_stdlib.js">
+</script> -->
+
+<script type="text/javascript" src="/static/js/brython.min.js"></script>
+<script type="text/javascript" src="/static/js/brython_stdlib.js"></script>
+<link href="/static/css/jquery-linedtextarea.css" type="text/css" rel="stylesheet" />
+
+<script id="python_script" type="text/python">
+import sys
+import traceback
+from browser import document, timer, alert
+
+def _write(*args):
+    document["turtle-print-output"].html += "".join(args)
+def __write(*args):
+    document["turtle-print-output"].html += '<span class="error">' + "".join(args) + "</span>"
+
+sys.stdout.write = _write
+sys.stderr.write = __write
+
+def clear_print():
+    document["turtle-print-output"].html = ""
+
+def run_code(ev):
+    timer.set_timeout(exec_code, 1)
+
+document["run"].bind("click", run_code)
+
+def next_unit(ev):
+    alert(document["class-Id"].value)
+
+document["next"].bind("click", next_unit)
+
+def get_code(ev):
+    alert('获取代码')
+document["get-code"].bind("click", get_code)
+
+def exec_code():
+    _code= document["code"].value
+    try:
+        exec(_code)
+    except:
+        try:
+            traceback.print_exc()
+        except:
+            print("could not print traceback")
+
+def delayed_clear():
+    from turtle import restart
+    restart()
+    clear_print()
+
+def clear(ev):
+    timer.set_timeout(delayed_clear, 1)
+
+document["clear"].bind("click", clear)
+
+#def replay(ev):
+    # importing turtle earlier slows down the loading
+    # of this page
+    #from turtle import replay_scene
+    #replay_scene()
+
+#document["replay-scene"].bind("click", replay)
+
+
+# Start with first demo
+#document["source"].text = document["code"].value
+#document["info"].html = document["info1"].html
+</script>
+
+<style>
+  h1, h2, h3, h4 {
+    color: blue;
+    margin:10px;
+    padding:0cm;
+  }
+  pre {
+    max-width: 800px;
+    overflow: auto;
+    word-break: normal !important;
+    word-wrap: normal !important;
+    white-space: pre !important;
+    font-weight: bold;
+  }
+  pre#source {
+    border: 1px solid blue;
+    background-color:antiquewhite;
+  }
+  pre#turtle-docstring {
+    background-color: white;
+    max-width: 800px;
+  }
+  hr {
+    clear: both;
+  }
+  #info {
+    max-width: 800px;
+    border: 1px dotted black;
+  }
+
+  pre#turtle-print-output {
+    background-color: black;
+    color: yellow;
+    font-weight: bolder;
+    min-height: 491px;
+    height: auto;
+    max-height: 600px;
+    
+    min-width: 500px;
+    width: auto;
+    max-width: 600px;
+  }
+
+  button {
+    margin: 2px;
+    padding: 1px;
+    width:60px;
+  }
+  #status-info {
+    color: darkred;
+    font-weight: bolder;
+  }
+  .error, .not-implemented {
+    color: red;
+  }
+  .btn-enabled {
+    color: black;
+    background-color: #c0c0c0;
+  }
+
+  .btn-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: #c0c0c0;
+    background-color: #ffffff;
+  }
+</style>
+
+</head>
+
+<body onload="brython(1)">
+<h1>Turtle demo</h1>
+
+<input type="hidden"  id="class-Id" value="123" />
+
+<!-- <div id="info"></div> -->
+
+<div>
+  <button id="run" class="btn-enabled">运行</button> 
+  <span id="status-info"></span>
+  <button id="clear" class="btn-enabled">清除</button>
+  <button id="next" class="btn-enabled">下一课</button>
+<div>
+  <div style="float:left;width:20%;height:492px;border:1px solid green">
+  &nbsp;
+  <h2 style="text-align:center">第一课 算法1</h2>
+  <p style="border:1px solid green;height:375px;margin:5px;padding:5px">
+    &nbsp;&nbsp;&nbsp;&nbsp;这是。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。
+  </p>
+  
+  <button id="get-code" class="btn-enabled">获取代码</button>
+  </div>
+  <div style="float:left;width:10px">&nbsp;</div>
+  <div class="container" style="float:left">
+<textarea class="lined" id='code'  rows="30" cols="70">num = 1
+num2 = 2
+print(num + num2)
+</textarea>
+  </div>
+  <div style="float:left;width:10px">&nbsp;</div>
+
+  <pre id="turtle-print-output" style="font-size:16px"></pre>
+  <!-- letter-spacing:1px;text-indent:10px; -->
+  <div style="clear:both"></div>
+</div>
+<br/>
+
+</body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.js"></script>
+<!-- 
+<script src="/static/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+
+<script src="/static/js/jquery-linedtextarea.js"></script>
+
+<script>$(function () {$(".lined").linedtextarea({selectedLine:1 });});</script>
+ -->
+</html>
