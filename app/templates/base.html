@@ -1,6 +1,7 @@
 <!doctype html>
 <title>{% block title %}{% endblock %} - Pyschool</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 <nav>
   <h1><a href="{{ url_for('index') }}">Pyschool</a></h1>
   <ul>
@@ -8,8 +9,16 @@
       <li><span>{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
     {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+    
+    
+      <li><a href="https://github.com/5icoding/howtocoding">如何持续编程</a>
+      <li><a href="https://github.com/5icoding/algorithm">github算法课程</a>
+      <li><a href="{{ url_for('static', filename='JavascriptVisual/Algorithms.html') }}">算法可视化</a>
+      <li><a href="{{ url_for('static', filename='BinaryTreeVisualiser/home.html') }}">二进制树可视化器</a>
+      <li><a href="{{ url_for('cubicle.index') }}">自习教室</a>
+      <li><a href="http://101.35.52.81:3000/index.html">协作编程</a></li>
+      <li><a href="{{ url_for('auth.register') }}">注册</a>
+      <li><a href="{{ url_for('auth.login') }}">登录</a>
     {% endif %}
   </ul>
 </nav>

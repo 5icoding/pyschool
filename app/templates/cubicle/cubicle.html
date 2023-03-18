@@ -1,21 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 
-<!-- <script type="text/javascript" src="js/brython.js"></script>
-<script type="text/javascript" src="js/brython_stdlib.js"></script> -->
-
-<!-- <script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/brython@3.11/brython.min.js">
-</script>
-<script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/brython@3.11/brython_stdlib.js">
-</script> -->
-
 <script type="text/javascript" src="/static/js/brython.min.js"></script>
 <script type="text/javascript" src="/static/js/brython_stdlib.js"></script>
-<link href="/static/css/jquery-linedtextarea.css" type="text/css" rel="stylesheet" />
 
 <script id="python_script" type="text/python">
 import sys
@@ -37,15 +30,6 @@ def run_code(ev):
     timer.set_timeout(exec_code, 1)
 
 document["run"].bind("click", run_code)
-
-def next_unit(ev):
-    alert(document["class-Id"].value)
-
-document["next"].bind("click", next_unit)
-
-def get_code(ev):
-    alert('获取代码')
-document["get-code"].bind("click", get_code)
 
 def exec_code():
     _code= document["code"].value
@@ -162,18 +146,10 @@ document["clear"].bind("click", clear)
   <button id="run" class="btn-enabled">运行</button> 
   <span id="status-info"></span>
   <button id="clear" class="btn-enabled">清除</button>
-  <button id="next" class="btn-enabled">下一课</button>
+
 <div>
-  <div style="float:left;width:20%;height:492px;border:1px solid green">
-  &nbsp;
-  <h2 style="text-align:center">第一课 算法1</h2>
-  <p style="border:1px solid green;height:375px;margin:5px;padding:5px">
-    &nbsp;&nbsp;&nbsp;&nbsp;这是。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。
-  </p>
-  
-  <button id="get-code" class="btn-enabled">获取代码</button>
-  </div>
-  <div style="float:left;width:10px">&nbsp;</div>
+
+
   <div class="container" style="float:left">
 <textarea class="lined" id='code'  rows="30" cols="70">num = 1
 num2 = 2
@@ -198,3 +174,5 @@ print(num + num2)
 <script>$(function () {$(".lined").linedtextarea({selectedLine:1 });});</script>
  -->
 </html>
+
+{% endblock %}
