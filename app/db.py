@@ -3,6 +3,7 @@ import sqlite3
 import click
 from flask import current_app
 from flask import g
+import pymysql
 
 
 def get_db():
@@ -11,10 +12,11 @@ def get_db():
     again.
     """
     if "db" not in g:
-        g.db = sqlite3.connect(
-            current_app.config["DATABASE"], detect_types=sqlite3.PARSE_DECLTYPES
-        )
-        g.db.row_factory = sqlite3.Row
+        # g.db = sqlite3.connect(
+        #     current_app.config["DATABASE"], detect_types=sqlite3.PARSE_DECLTYPES
+        # )
+        # g.db.row_factory = sqlite3.Row
+        g.db = pymysql.connect(user='root', password='123456', host='localhost', database='mydb')
 
     return g.db
 

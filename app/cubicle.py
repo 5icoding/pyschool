@@ -17,4 +17,17 @@ bp = Blueprint("cubicle", __name__, url_prefix="/cubicle")
 
 @bp.route("/")
 def index():
-    return render_template("cubicle/cubicle.html")
+    return render_template("cubicle/ide.html")
+
+
+@bp.route("/code")
+def code():
+    return render_template("cubicle/code.html")
+
+@bp.route("/read")
+def read():
+    return render_template("cubicle/read.html")
+
+@bp.route("/test")
+def test():
+    return render_template("cubicle/test.html")

@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <!doctype html>
 <html>
 <head>
@@ -115,13 +118,13 @@ document["clear"].bind("click", clear)
     background-color: black;
     color: yellow;
     font-weight: bolder;
-    min-height: 491px;
+    min-height: 485px;
     height: auto;
     max-height: 600px;
     
-    min-width: 500px;
+    min-width: 400px;
     width: auto;
-    max-width: 600px;
+    max-width: 500px;
   }
 
   button {
@@ -152,7 +155,7 @@ document["clear"].bind("click", clear)
 </head>
 
 <body onload="brython(1)">
-<h1>Turtle demo</h1>
+<h1>编程自习室</h1>
 
 <input type="hidden"  id="class-Id" value="123" />
 
@@ -164,10 +167,10 @@ document["clear"].bind("click", clear)
   <button id="clear" class="btn-enabled">清除</button>
   <button id="next" class="btn-enabled">下一课</button>
 <div>
-  <div style="float:left;width:20%;height:492px;border:1px solid green">
+  <div style="float:left;width:20%;height:485px;border:1px solid green">
   &nbsp;
   <h2 style="text-align:center">第一课 算法1</h2>
-  <p style="border:1px solid green;height:375px;margin:5px;padding:5px">
+  <p style="border:1px solid green;height:275px;margin:5px;padding:5px">
     &nbsp;&nbsp;&nbsp;&nbsp;这是。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。这是。。。。。。。。。。。。。。。。
   </p>
   
@@ -175,7 +178,7 @@ document["clear"].bind("click", clear)
   </div>
   <div style="float:left;width:10px">&nbsp;</div>
   <div class="container" style="float:left">
-<textarea class="lined" id='code'  rows="30" cols="70">num = 1
+<textarea class="lined" id='code'  rows="30" cols="50">num = 1
 num2 = 2
 print(num + num2)
 </textarea>
@@ -198,3 +201,4 @@ print(num + num2)
 <script>$(function () {$(".lined").linedtextarea({selectedLine:1 });});</script>
  -->
 </html>
+{% endblock %}

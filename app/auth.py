@@ -10,6 +10,7 @@ from flask import session
 from flask import url_for
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
+import pymysql
 
 from app.db import get_db
 
@@ -38,9 +39,19 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = (
-            get_db().execute("SELECT * FROM user WHERE id = ?", (user_id,)).fetchone()
-        )
+        # g.user = (
+        #     get_db().execute("SELECT * FROM user WHERE id = ?", (user_id,)).fetchone()
+        # )
+        
+        # create cursor
+        cursor = get_db().cursor(cursor=pymysql.cursors.DictCursor)
+
+        # execute SQL query and fetch one row
+        cursor.execute("SELECT * FROM user WHERE id = %s", (user_id,))
+        g.user = cursor.fetchone()
+
+        # close cursor and connection
+        cursor.close()
 
 
 @bp.route("/register", methods=("GET", "POST"))
@@ -63,11 +74,27 @@ def register():
 
         if error is None:
             try:
-                db.execute(
-                    "INSERT INTO user (username, password) VALUES (?, ?)",
-                    (username, generate_password_hash(password)),
+                # db.execute(
+                #     "INSERT INTO user (username, password) VALUES (?, ?)",
+                #     (username, generate_password_hash(password)),
+                # )
+                # db.commit()
+
+                # 创建游标对象
+                cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
+
+                # 执行插入操作
+                cursor.execute(
+                    "INSERT INTO user (username, password) VALUES (%s, %s)",
+                    (username, generate_password_hash(password))
                 )
+
+                # 提交更改
                 db.commit()
+
+                # 关闭游标和连接
+                cursor.close()
+
             except db.IntegrityError:
                 # The username was already taken, which caused the
                 # commit to fail. Show a validation error.
@@ -89,9 +116,19 @@ def login():
         password = request.form["password"]
         db = get_db()
         error = None
-        user = db.execute(
-            "SELECT * FROM user WHERE username = ?", (username,)
-        ).fetchone()
+        # user = db.execute(
+        #     "SELECT * FROM user WHERE username = ?", (username,)
+        # ).fetchone()
+
+        # 创建游标对象
+        cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
+
+        # 查询用户
+        cursor.execute("SELECT * FROM user WHERE username = %s", (username,))
+        user = cursor.fetchone()
+
+        # 关闭游标和连接
+        cursor.close()
 
         if user is None:
             error = "Incorrect username."
@@ -102,6 +139,8 @@ def login():
             # store the user id in a new session and return to the index
             session.clear()
             session["user_id"] = user["id"]
+            g.user = user
+            print(g.user)
             return redirect(url_for("index"))
 
         flash(error)
